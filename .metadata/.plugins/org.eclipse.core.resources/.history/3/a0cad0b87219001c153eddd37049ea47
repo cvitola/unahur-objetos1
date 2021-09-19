@@ -1,0 +1,63 @@
+import cosas.*
+
+object camion {
+	const property cosas = []
+	
+	method tara() { return 1000} //Tara siempre es la misma.
+	
+	method limiteCarga() { return 2500 } //maxima capacidad del camion
+	
+	method cargar(unaCosa) {
+		cosas.add(unaCosa)
+	}
+	
+	method descargar(unaCosa) {
+		cosas.remove(unaCosa)
+	}
+	
+	method todoPesoPar() {
+		return cosas.all({ cosa => cosa.peso() % 2 == 0 })
+	}
+	
+	method hayAlgunoQuePesa(peso){
+		return cosas.any( {cosa => cosa.peso() == peso })
+	}
+	
+	method elDeNivel(nivel) {
+		return cosas.find( {cosa => cosa.nivelPeligrosidad() == nivel })
+	}
+	
+
+	method pesoTotal() {
+		return cosas.sum({ cosa => cosa.peso() }) + self.tara()
+	}
+	
+	method excedidoDePeso() {
+		return self.pesoTotal () > self.limiteCarga()
+	}
+	
+	method objetosQueSuperanPeligrosidad(nivel) {
+		return cosas.filter({ cosa => cosa.nivelPeligrosidad() > nivel })
+	}
+	
+	method objetosMasPeligrososQue(unaCosa) {
+		return cosas.filter({ cosa => cosa.nivelPeligrosidad() > unaCosa.nivelPeligrosidad() })
+	}
+	
+	method puedeCircularEnRuta(nivelMaximoPeligrosidad) {
+		//Que no exceda el limite y que la coleccion que devuelve el metodo objetosQueSuperanPeligrosidad NO tenga elementos
+		return not self.excedidoDePeso() and self.objetosQueSuperanPeligrosidad(nivelMaximoPeligrosidad).size() == 0
+	}
+	
+	method tieneAlgoQuePesaEntre(min, max){
+		return cosas.any({ cosa => cosa.peso().between(min,max)})
+	}
+	
+	method cosaMasPesada(){
+		return cosas.max({ cosa => cosa.peso() })
+	}
+	
+	method pesos(){
+		return cosas.map({ cosa => cosa.peso() })
+	}
+}

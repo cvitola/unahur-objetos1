@@ -1,0 +1,78 @@
+object knightRider {
+	method peso() { return 500 }
+	method nivelPeligrosidad() { return 10 }
+}
+
+object bumblebee {
+	var transformadoEnAuto = true
+	
+	method peso() { return 800 }
+	method nivelPeligrosidad() { return if (transformadoEnAuto) { 15 } else { 30 }  }
+	method transformar() { transformadoEnAuto = not transformadoEnAuto }
+	method transformadoEnAuto() { return transformadoEnAuto } //para los test.
+}
+
+object paqueteDeLadrillos {
+	var cantidadLadrillos = 100
+	
+	method pesoUnLadrillo() { return 2 }
+	method peso() { return self.pesoUnLadrillo() * cantidadLadrillos }
+	method nivelPeligrosidad() { return 2 }
+	method cantidadLadrillos(cant) { cantidadLadrillos = cant }
+}
+
+object arenaAGranel {
+	var peso = 10
+	
+	method peso() { return peso }
+	method nivelPeligrosidad() { return 1 }
+	method peso(cant) { peso = cant }
+}
+
+object bateriaAntiaerea {
+	var misiles = false
+	
+	method peso() { return if (misiles) { 300 } else { 200 }  }
+	method nivelPeligrosidad() { return if (misiles) { 100 } else { 0 }  }
+	method cambiarMisiles() { misiles = not misiles}
+}
+
+object contenedorPortuario {
+	const property cosas = []
+	
+	method tara() { return 100 } //peso fijo del contenedor 
+	method cargar(unaCosa) {
+		cosas.add(unaCosa)
+	}
+	method descargar(unaCosa) {
+		cosas.remove(unaCosa)
+	}
+	
+	method peso() {
+		return cosas.sum({ cosa => cosa.peso() }) + self.tara()
+	}	
+	
+	method objetoMasPeligroso() {
+		return cosas.max({ cosa => cosa.nivelPeligrosidad() })
+	}
+	
+	method nivelPeligrosidad() { return if (cosas.size() > 0) { self.objetoMasPeligroso() } else { 0 }  }
+	
+}
+
+object residuosRadioactivos{
+	var peso = 100
+	
+	method peso() { return peso }
+	method nivelPeligrosidad() { return 200 }
+	method peso(cant) { peso = cant }
+}
+
+object embalajeDeSeguridad{
+	var cosa
+	
+	method peso() { return cosa.peso() }
+	method poner(unaCosa) { cosa = unaCosa }
+	method cosa() { return cosa }
+	method nivelPeligrosidad() { return cosa.nivelPeligrosidad() / 2 }
+}

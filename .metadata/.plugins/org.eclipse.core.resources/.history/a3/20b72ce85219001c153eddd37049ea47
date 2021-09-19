@@ -1,0 +1,31 @@
+import cosas.*
+
+object camion {
+	const property cosas = []
+	
+	method tara() { return 1000} //Tara siempre es la misma.
+	
+	method cargar(unaCosa) {
+		cosas.add(unaCosa)
+	}
+	
+	method descargar(unaCosa) {
+		cosas.remove(unaCosa)
+	}
+	
+	method todoPesoPar() {
+		return cosas.all({ cosa => cosa.peso() % 2 == 0 })
+	}
+	
+	method hayAlgunoQuePesa(peso){
+		return cosas.any( {cosa => cosa.peso() == peso })
+	}
+	
+	method elDeNivel(nivel) {
+		return cosas.find( {cosa => cosa.nivelPeligrosidad() == nivel })
+	}
+	
+	method pesoTotal() {
+		
+	}
+}

@@ -1,0 +1,52 @@
+import camion.*
+import cosas.*
+
+test "Paquete de Ladrillos 500 unidades peso 1000 peligrosidad 2"{
+	
+	//Escenario
+	var cantidad = 500
+	var peso = 1000
+	paqueteDeLadrillos.cantidadLadrillos(cantidad)
+	
+	//validaciones
+	assert.equals(peso, paqueteDeLadrillos.peso())
+	assert.equals(2, paqueteDeLadrillos.nivelPeligrosidad())
+}
+
+test "Bateria Antiarea con misil peso 300 y peligrosidad 100" {
+	
+	//escenario
+	bateriaAntiarea.cambiarMisiles()
+	
+	//validaciones
+	assert.equals(300, bateriaAntiarea.peso())
+	assert.equals(100, bateriaAntiarea.nivelPeligrosidad())
+}
+
+
+test "Contenedor Portuario con 3 elementos" {
+	
+	//escenario
+	contenedorPortuario.cargar(paqueteDeLadrillos)
+	contenedorPortuario.cargar(arenaAGranel)
+	contenedorPortuario.cargar(knightRider)
+	
+	//validacion 
+	
+	assert.equals(3, contenedorPortuario.cosas().size())
+
+}
+
+test "embalajeDeSeguridad con residuosRadioactivos de 30kg" {
+	//escenario
+	var kg = 30
+	embalajeDeSeguridad.poner(residuosRadioactivos)
+	embalajeDeSeguridad.cosa().peso(kg)
+	
+	//validaciones
+	assert.equals(residuosRadioactivos, embalajeDeSeguridad.cosa())
+	assert.equals(kg, embalajeDeSeguridad.cosa().peso())
+}
+
+
+
