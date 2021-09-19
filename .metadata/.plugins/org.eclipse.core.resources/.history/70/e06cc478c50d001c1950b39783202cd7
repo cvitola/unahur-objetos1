@@ -1,0 +1,63 @@
+/*
+ * definir remiseras y clientes.
+ */
+
+object ludmila{
+	method precioPorKm() { return 18 }
+}
+
+object anaMaria{
+	var economicamenteEstable = true
+	method precioPorKm() {
+		if(economicamenteEstable){
+			return 30
+		} else {
+			return 25
+		}
+	}
+	
+	method setEconomicamenteEstable() { 
+		economicamenteEstable = not economicamenteEstable
+	}
+}
+
+object teresa {
+	var precio = 22
+	method precioPorKm() { return precio}
+	method cambiarPrecio(val) {
+		precio = val
+	}
+}
+
+object roxana {
+	method cobrarACliente(km, cliente){
+		return cliente.precioPorKm() * km
+	}
+}
+
+object gabriela {
+	method cobrarACliente(km, cliente) {
+		return cliente.precioPorKm() * km * 1.2
+	}
+}
+
+object mariela {
+	method cobrarACliente(km, cliente) {
+		var importe = cliente.precioPorKm() * km
+		if (importe >= 50){
+			return importe
+		}else{
+			return 50
+		}
+	}
+}
+
+object juana {
+	method cobrarACliente(km, cliente) {
+		if(km <= 8){
+			return 100
+		} else{
+			return 200
+		}
+	}
+}

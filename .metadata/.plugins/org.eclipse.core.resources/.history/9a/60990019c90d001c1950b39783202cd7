@@ -1,0 +1,79 @@
+import remiseras.*
+
+test "Roxana cobra a cada cliente por 10Km" {
+	assert.equals(180, roxana.cobrarACliente(10, ludmila))
+	assert.equals(300, roxana.cobrarACliente(10, anaMaria))
+	assert.equals(220, roxana.cobrarACliente(10, teresa))
+	
+}
+test "Gabriela cobra a cada cliente por 10Km" {
+	assert.equals(216, gabriela.cobrarACliente(10, ludmila))
+	assert.equals(360, gabriela.cobrarACliente(10, anaMaria))
+	assert.equals(264, gabriela.cobrarACliente(10, teresa))
+	
+}
+
+test "Mariela cobra a cada cliente por 10Km" {
+	assert.equals(180, mariela.cobrarACliente(10, ludmila))
+	assert.equals(300, mariela.cobrarACliente(10, anaMaria))
+	assert.equals(220, mariela.cobrarACliente(10, teresa))
+	
+}
+
+test "Juana cobra a cada cliente por 10Km" {
+	assert.equals(200, juana.cobrarACliente(10, ludmila))
+	assert.equals(200, juana.cobrarACliente(10, anaMaria))
+	assert.equals(200, juana.cobrarACliente(10, teresa))
+	
+}
+
+test "Roxana cobra a cada cliente por 2Km" {
+	assert.equals(36, roxana.cobrarACliente(2, ludmila))
+	assert.equals(60, roxana.cobrarACliente(2, anaMaria))
+	assert.equals(44, roxana.cobrarACliente(2, teresa))
+	
+}
+test "Gabriela cobra a cada cliente por 2Km" {
+	assert.equals(43.20, gabriela.cobrarACliente(2, ludmila))
+	assert.equals(72, gabriela.cobrarACliente(2, anaMaria))
+	assert.equals(52.80, gabriela.cobrarACliente(2, teresa))
+	
+}
+
+test "Mariela cobra a cada cliente por 2Km" {
+	assert.equals(50, mariela.cobrarACliente(2, ludmila))
+	assert.equals(60, mariela.cobrarACliente(2, anaMaria))
+	assert.equals(50, mariela.cobrarACliente(2, teresa))
+	
+}
+
+test "Juana cobra a cada cliente por 2Km" {
+	assert.equals(100, juana.cobrarACliente(2, ludmila))
+	assert.equals(100, juana.cobrarACliente(2, anaMaria))
+	assert.equals(100, juana.cobrarACliente(2, teresa))
+	
+}
+
+test "Lucía reemplaza a Mariela y Melina trabaja para Ludmila viaje 10km" {
+	lucia.reemplaza(mariela)
+	melina.trabajaPara(ludmila)
+	assert.equals(150, lucia.cobrarACliente(10, melina))
+}
+
+test "Lucía reemplaza a Mariela y Melina trabaja para Ludmila viaje 1km" {
+	lucia.reemplaza(mariela)
+	melina.trabajaPara(ludmila)
+	assert.equals(50, lucia.cobrarACliente(1, melina))
+}
+
+test "Lucía reemplaza a Gabriela y Melina trabaja para Ludmila viaje 10km" {
+	lucia.reemplaza(gabriela)
+	melina.trabajaPara(ludmila)
+	assert.equals(180, lucia.cobrarACliente(10, melina))
+}
+
+test "Lucía reemplaza a Gabriela y Melina trabaja para Ludmila viaje 1km" {
+	lucia.reemplaza(gabriela)
+	melina.trabajaPara(ludmila)
+	assert.equals(18, lucia.cobrarACliente(1, melina))
+}

@@ -1,0 +1,13 @@
+import remiseras.*
+test "Roxana cobra a cada cliente por 10Km" {
+	assert.equals(180, roxana.cobrarACliente(10, ludmila))
+	assert.equals(300, roxana.cobrarACliente(10, anaMaria))
+	assert.equals(220, roxana.cobrarACliente(10, teresa))
+	
+}
+test "Gabriela cobra a cada cliente por 10Km" {
+	assert.equals(216, gabriela.cobrarACliente(10, ludmila))
+	assert.equals(360, gabriela.cobrarACliente(10, anaMaria))
+	assert.equals(264, gabriela.cobrarACliente(10, teresa))
+	
+}
